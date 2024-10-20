@@ -91,7 +91,7 @@ export default function SignInPage() {
                                     );
                                 }}
                             />
-                            <Link href="/signup">Don't have an account?</Link>
+                            <Link href="/signup">Don&apos;t have an account?</Link>
                             <Button type="submit">Sign In</Button>
                         </form>
                     </Form>

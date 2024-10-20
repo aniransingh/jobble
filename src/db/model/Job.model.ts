@@ -1,6 +1,6 @@
 "use server";
 
-import { ApplicationStatus, LocationType } from "@/types/enums";
+import { ApplicationStatus, LocationType } from "@/lib/enums";
 import mongoose, { Schema, Document } from "mongoose";
 
 export interface JobDocument extends Document {
@@ -35,7 +35,7 @@ const JobSchema: Schema<JobDocument> = new Schema(
                     // for remote: city and state should * not * be present
                     // for physical: the trio must be present
                     if (v === LocationType.Remote) {
-                        return !this.city && !this.state
+                        return !this.city && !this.state;
                     } else {
                         return !!this.city && !!this.state && !!this.country;
                     }

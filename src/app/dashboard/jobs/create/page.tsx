@@ -33,7 +33,7 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
-import { ApplicationStatus, LocationType } from "@/types/enums";
+import { ApplicationStatus, LocationType } from "@/lib/enums";
 import { createJobSchema } from "@/validation/job.validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
@@ -44,7 +44,6 @@ import { createJob } from "@/actions/jobActions";
 import { useRouter } from "next/navigation";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
-import { Label } from "@/components/ui/label";
 
 export default function CreateJobPage() {
     const router = useRouter();
@@ -70,7 +69,7 @@ export default function CreateJobPage() {
     });
 
     const handleSubmit = async (values: z.infer<typeof createJobSchema>) => {
-        const { success, message } = await createJob(values);
+        const { success } = await createJob(values);
 
         if (success) {
             router.push("/dashboard/jobs");

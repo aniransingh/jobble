@@ -6,7 +6,7 @@ import { createJobSchema } from "@/validation/job.validation";
 import { z } from "zod";
 import { gzip, gunzip } from "zlib";
 import { promisify } from "util";
-import { LocationType } from "@/types/enums";
+import { LocationType } from "@/lib/enums";
 
 const compress = promisify(gzip);
 

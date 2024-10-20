@@ -1,4 +1,4 @@
-import { ApplicationStatus, LocationType } from "@/types/enums";
+import { ApplicationStatus, LocationType } from "@/lib/enums";
 import { z } from "zod";
 
 export const createJobSchema = z
@@ -25,7 +25,7 @@ export const createJobSchema = z
             if (data.locationType === LocationType.Physical) {
                 return data.city;
             } else {
-                return true
+                return true;
             }
         },
         {
@@ -38,7 +38,7 @@ export const createJobSchema = z
             if (data.locationType === LocationType.Physical) {
                 return data.state;
             } else {
-                return true
+                return true;
             }
         },
         {
@@ -51,7 +51,7 @@ export const createJobSchema = z
             if (data.locationType === LocationType.Physical) {
                 return data.country;
             } else {
-                return true
+                return true;
             }
         },
         {

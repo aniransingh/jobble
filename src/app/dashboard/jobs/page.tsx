@@ -1,12 +1,9 @@
 import { fetchJobs as fetchJobsAction } from "@/actions/jobActions";
 import JobCard from "@/components/JobCard";
 import { Button } from "@/components/ui/button";
-import { JobDocument } from "@/db/model/Job.model";
-import Error from "next/error";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
-const MAX_RETRIES = 3;
+// const MAX_RETRIES = 3;
 
 export default async function JobsPage() {
     const {data: jobs} = await fetchJobsAction();

@@ -1,8 +1,7 @@
 import { Card, CardContent } from "./ui/card";
 import { Button } from "./ui/button";
-import { ApplicationStatus, LocationType } from "@/types/enums";
-import { cn } from "@/lib/utils";
-import mongoose from "mongoose";
+import { ApplicationStatus, LocationType } from "@/lib/enums";
+
 import Link from "next/link";
 
 type Props = {

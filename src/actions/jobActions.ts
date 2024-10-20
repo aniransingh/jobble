@@ -7,6 +7,7 @@ import { z } from "zod";
 import { gzip, gunzip } from "zlib";
 import { promisify } from "util";
 import { LocationType } from "@/lib/enums";
+import { ApiResponse } from "@/lib/types";
 
 const compress = promisify(gzip);
 
@@ -76,7 +77,6 @@ export async function fetchJobs(): Promise<ApiResponse<JobDocument[]>> {
 
         return {
             success: false,
-            error: error,
             message: "Error fetching Jobs, please try again later",
         };
     }

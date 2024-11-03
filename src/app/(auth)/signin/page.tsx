@@ -37,8 +37,8 @@ export default function SignInPage() {
     };
 
     return (
-        <div className="flex justify-center items-center h-screen">
-            <Card>
+        <div className="flex justify-center items-center h-full">
+            <Card className="bg-primary border-border text-text-primary rounded-xl">
                 <CardHeader>
                     <CardTitle>Sign In</CardTitle>
                     <CardDescription>
@@ -48,7 +48,7 @@ export default function SignInPage() {
                 <CardContent>
                     <Form {...form}>
                         <form
-                            className="flex flex-col gap-4"
+                            className="flex flex-col items-center gap-4"
                             onSubmit={form.handleSubmit(handleSubmit)}
                         >
                             {/* Email */}
@@ -61,6 +61,7 @@ export default function SignInPage() {
                                             <FormLabel>Email</FormLabel>
                                             <FormControl>
                                                 <Input
+                                                    className="auth-input"
                                                     placeholder="Enter your email"
                                                     type="text"
                                                     {...field}
@@ -81,6 +82,7 @@ export default function SignInPage() {
                                             <FormLabel>Password</FormLabel>
                                             <FormControl>
                                                 <Input
+                                                    className="auth-input"
                                                     placeholder="Enter your password"
                                                     type="text"
                                                     {...field}
@@ -91,8 +93,12 @@ export default function SignInPage() {
                                     );
                                 }}
                             />
-                            <Link href="/signup">Don&apos;t have an account?</Link>
-                            <Button type="submit">Sign In</Button>
+                            <Link href="/signup" className="mt-4 hover:text-accent">
+                                Don&apos;t have an account?
+                            </Link>
+                            <Button type="submit" variant="custom" className="w-[420px]">
+                                Sign In
+                            </Button>
                         </form>
                     </Form>
                 </CardContent>

@@ -44,6 +44,7 @@ import { createJob } from "@/actions/jobActions";
 import { useRouter } from "next/navigation";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
+import DashboardHeader from "@/components/DashoardHeader";
 
 export default function CreateJobPage() {
     const router = useRouter();
@@ -88,26 +89,34 @@ export default function CreateJobPage() {
     const locationType = form.watch("locationType");
 
     return (
-        <div className="flex flex-col">
-            <div className="flex justify-between h-[70px] p-6">
+        <div>
+            <DashboardHeader>
                 <Breadcrumb>
-                    <BreadcrumbList className="text-xl">
+                    <BreadcrumbList className="breadcrum">
                         <BreadcrumbItem>
-                            <BreadcrumbLink href="/dashboard/jobs">
+                            <BreadcrumbLink
+                                href="/dashboard/jobs"
+                                className="breadcrum-link"
+                            >
                                 Jobs
                             </BreadcrumbLink>
                         </BreadcrumbItem>
                         <BreadcrumbSeparator />
                         <BreadcrumbItem>
-                            <BreadcrumbPage>Create Job</BreadcrumbPage>
+                            <BreadcrumbLink
+                                href="/dashboard/jobs/create"
+                                className="breadcrum-page"
+                            >
+                                Create Job
+                            </BreadcrumbLink>
                         </BreadcrumbItem>
                     </BreadcrumbList>
                 </Breadcrumb>
-            </div>
-            <div className="p-6">
+            </DashboardHeader>
+            <div className="flex p-4">
                 <Form {...form}>
                     <form
-                        className="flex flex-col gap-4"
+                        className="flex flex-col gap-4 p-4"
                         onSubmit={form.handleSubmit(handleSubmit)}
                     >
                         {/* Role */}
@@ -117,10 +126,12 @@ export default function CreateJobPage() {
                             render={({ field }) => {
                                 return (
                                     <FormItem>
-                                        <FormLabel>Role</FormLabel>
+                                        <FormLabel className="label">
+                                            Role
+                                        </FormLabel>
                                         <FormControl>
                                             <Input
-                                                className="input"
+                                                className="form-input"
                                                 placeholder="E.g. Backend Developer"
                                                 {...field}
                                                 type="text"
@@ -138,10 +149,12 @@ export default function CreateJobPage() {
                             render={({ field }) => {
                                 return (
                                     <FormItem>
-                                        <FormLabel>Company</FormLabel>
+                                        <FormLabel className="label">
+                                            Company
+                                        </FormLabel>
                                         <FormControl>
                                             <Input
-                                                className="input"
+                                                className="form-input"
                                                 placeholder="E.g. Google"
                                                 {...field}
                                                 type="text"
@@ -162,6 +175,7 @@ export default function CreateJobPage() {
                                         <FormItem className="flex items-center gap-2">
                                             <FormControl className="bg-sky-400">
                                                 <Switch
+                                                    className="data-[state=checked]:bg-accent data-[state=unchecked]:bg-border"
                                                     id="location-remote"
                                                     checked={
                                                         field.value ===
@@ -195,10 +209,12 @@ export default function CreateJobPage() {
                                         render={({ field }) => {
                                             return (
                                                 <FormItem>
-                                                    <FormLabel>City</FormLabel>
+                                                    <FormLabel className="label">
+                                                        City
+                                                    </FormLabel>
                                                     <FormControl>
                                                         <Input
-                                                            className="input"
+                                                            className="form-input"
                                                             placeholder="E.g. Bangalore"
                                                             {...field}
                                                             type="text"
@@ -218,10 +234,12 @@ export default function CreateJobPage() {
                                         render={({ field }) => {
                                             return (
                                                 <FormItem>
-                                                    <FormLabel>State</FormLabel>
+                                                    <FormLabel className="label">
+                                                        State
+                                                    </FormLabel>
                                                     <FormControl>
                                                         <Input
-                                                            className="input"
+                                                            className="form-input"
                                                             placeholder="E.g. Karnataka"
                                                             {...field}
                                                             type="text"
@@ -240,10 +258,12 @@ export default function CreateJobPage() {
                                     render={({ field }) => {
                                         return (
                                             <FormItem>
-                                                <FormLabel>Country</FormLabel>
+                                                <FormLabel className="label">
+                                                    Country
+                                                </FormLabel>
                                                 <FormControl>
                                                     <Input
-                                                        className="input"
+                                                        className="form-input"
                                                         placeholder="E.g. India"
                                                         {...field}
                                                         type="text"
@@ -263,10 +283,12 @@ export default function CreateJobPage() {
                             render={({ field }) => {
                                 return (
                                     <FormItem>
-                                        <FormLabel>Salary (in LPA)</FormLabel>
+                                        <FormLabel className="label">
+                                            Salary (in LPA)
+                                        </FormLabel>
                                         <FormControl>
                                             <Input
-                                                className="input"
+                                                className="form-input"
                                                 placeholder="E.g. 15"
                                                 {...field}
                                                 type="text"
@@ -285,12 +307,12 @@ export default function CreateJobPage() {
                             render={({ field }) => {
                                 return (
                                     <FormItem>
-                                        <FormLabel>
+                                        <FormLabel className="label">
                                             Job Listing Source
                                         </FormLabel>
                                         <FormControl>
                                             <Input
-                                                className="input"
+                                                className="form-input"
                                                 placeholder="E.g. Linkedin"
                                                 {...field}
                                                 type="text"
@@ -308,12 +330,12 @@ export default function CreateJobPage() {
                             render={({ field }) => {
                                 return (
                                     <FormItem>
-                                        <FormLabel>
+                                        <FormLabel className="label">
                                             Job Application Platform
                                         </FormLabel>
                                         <FormControl>
                                             <Input
-                                                className="input"
+                                                className="form-input"
                                                 placeholder="E.g. Company Portal"
                                                 {...field}
                                                 type="text"
@@ -331,14 +353,16 @@ export default function CreateJobPage() {
                             render={({ field }) => {
                                 return (
                                     <FormItem className="flex flex-col gap-[5px]">
-                                        <FormLabel>Status</FormLabel>
+                                        <FormLabel className="label">
+                                            Status
+                                        </FormLabel>
                                         <Popover>
                                             <PopoverTrigger asChild>
                                                 <FormControl>
                                                     <Button
                                                         className="w-[400px] gap-4 relative"
                                                         type="button"
-                                                        variant={"outline"}
+                                                        variant="outline-custom"
                                                     >
                                                         {field.value
                                                             ? statusOptions.find(
@@ -407,14 +431,16 @@ export default function CreateJobPage() {
                             render={({ field }) => {
                                 return (
                                     <FormItem className="flex flex-col gap-[5px]">
-                                        <FormLabel>Applied On</FormLabel>
+                                        <FormLabel className="label">
+                                            Applied On
+                                        </FormLabel>
                                         <Popover>
                                             <PopoverTrigger asChild>
                                                 <FormControl>
                                                     <Button
                                                         className="w-[400px] gap-4 relative"
                                                         type="button"
-                                                        variant={"outline"}
+                                                        variant="outline-custom"
                                                     >
                                                         {field.value ? (
                                                             format(
@@ -461,7 +487,9 @@ export default function CreateJobPage() {
                             render={({ field }) => {
                                 return (
                                     <FormItem>
-                                        <FormLabel>Job Description</FormLabel>
+                                        <FormLabel className="label">
+                                            Job Description
+                                        </FormLabel>
                                         <FormControl>
                                             <Textarea
                                                 className="input"
@@ -475,7 +503,11 @@ export default function CreateJobPage() {
                             }}
                         />
                         {/* Submit */}
-                        <Button type="submit" className="mt-8 max-w-[400px]">
+                        <Button
+                            type="submit"
+                            variant="accent"
+                            className="form-btn mt-8"
+                        >
                             Submit
                         </Button>
                     </form>

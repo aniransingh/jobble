@@ -41,7 +41,7 @@ export default function SignUpPage() {
 
     return (
         <div className="flex justify-center items-center h-screen">
-            <Card>
+            <Card className="bg-primary border-border text-text-primary rounded-xl">
                 <CardHeader>
                     <CardTitle>Sign Up</CardTitle>
                     <CardDescription>
@@ -156,8 +156,8 @@ export default function SignUpPage() {
                                     );
                                 }}
                             />
-                            <Link href="/signin">Already have an account?</Link>
-                            <Button type="submit">Sign Up</Button>
+                            <Link href="/signin" className="mt-4 hover:text-accent">Already have an account?</Link>
+                            <Button type="submit" variant="custom" className="w-[420px]">Sign Up</Button>
                         </form>
                     </Form>
                 </CardContent>

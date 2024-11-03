@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+:root {
+    height: 100%;
+    font-size: 16px;
+}
+
+.input {
+    @apply h-[40px] bg-secondary border-border rounded-lg text-[0.895rem];
+}
+
+.form-input {
+    @apply w-[400px] h-[40px] bg-secondary border-border rounded-lg text-[0.895rem];
+}
+
+.label {
+    @apply text-[0.895rem];
+}
+
+.form-btn {
+    @apply h-[40px] w-[400px] font-medium text-[1rem];
+}
+
+.auth-input {
+    @apply w-[420px] bg-secondary border-border;
+}
+
+.tooltip {
+    @apply bg-tooltip text-xs text-text-tooltip rounded-md p-2 mt-1;
+}
+
+.breadcrum {
+    @apply text-[1.075rem];
+}
+
+.breadcrum-link {
+    @apply text-[#b4b4b4] hover:text-text-primary;
+}
+
+.breadcrum-page {
+    @apply text-[#fff] hover:text-text-primary;
+}
+
+@layer base {
+    :root {
+        --color-accent: #6f00ff;
+        --color-primary: #000000;
+        --color-secondary: #111111;
+        --color-border: #3d3d3d;
+        --color-text-primary: #ffffff;
+        --color-text-primary-alt: #000000;
+        --color-text-secondary: #dbdbdb;
+        --color-accent-hover: hsl(266, 100%, 30%);
+        --color-button: #222222;
+        --color-tooltip: #ffffff;
+        --color-text-tooltip: #000000;
+
+        --grad-card-1: linear-gradient(45deg, #ffafbd 0%, #ffc3a0 100%);
+        --grad-card-2: linear-gradient(45deg, #85e3ff 0%, #d4c0e1 100%);
+        --grad-card-3: linear-gradient(45deg, #fbc2eb 0%, #e8b3c4 100%);
+        --grad-card-4: linear-gradient(45deg, #ffecd2 0%, #fcb69f 100%);
+        --grad-card-5: linear-gradient(45deg, #d4fc79 0%, #96e6a1 100%);
+        --grad-card-6: linear-gradient(45deg, #f9d7e8 0%, #f2a8c3 100%);
+        --grad-card-7: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 100%);
+        --grad-card-8: linear-gradient(45deg, #ffb347 0%, #ffcc33 100%);
+        --grad-card-9: linear-gradient(45deg, #fbc2eb 0%, #e6dee9 100%);
+        --grad-card-10: linear-gradient(45deg, #96fbc4 0%, #f9f586 100%);
+
+        --grad-broken-hearts: linear-gradient(to right, #d9a7c7, #fffcdc);
+        --grad-wiretap: linear-gradient(to right, #8a2387, #e94057, #f27121);
+        --grad-wedding-day: linear-gradient(
+            to right,
+            #40e0d0,
+            #ff8c00,
+            #ff0080
+        );
+    }
+}
+/* background-color: #D9AFD9;background-image:%20linear-gradient(45deg,%20#D9AFD9%200%,%20#97D9E1%20100%); */
+
+::-webkit-scrollbar {
+    background-color: var(--color-primary);
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--color-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-accent);
+    border-radius: 5px;
+}

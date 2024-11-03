@@ -6,7 +6,6 @@ import {
     TooltipProvider,
     TooltipTrigger,
 } from "./ui/tooltip";
-import { cn } from "@/lib/utils";
 
 export default async function AppliedToday() {
     const {

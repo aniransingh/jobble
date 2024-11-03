@@ -1,17 +1,13 @@
-import Link from "next/link";
 import Logo from "./Logo";
 import {
     Sidebar,
     SidebarContent,
     SidebarFooter,
-    SidebarGroup,
     SidebarHeader,
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
-    SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
-import { it } from "node:test";
 import { LayoutDashboard, Pizza } from "lucide-react";
 
 const items = [
@@ -27,12 +23,12 @@ const items = [
     },
 ];
 
-const jobsItems = [
-    {
-        title: "Create Job",
-        url: "/dashboard/jobs/create",
-    },
-];
+// const jobsItems = [
+//     {
+//         title: "Create Job",
+//         url: "/dashboard/jobs/create",
+//     },
+// ];
 
 export default function AppSidebar() {
     return (

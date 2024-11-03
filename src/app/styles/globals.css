@@ -58,6 +58,7 @@ body,
         --color-button: #222222;
         --color-tooltip: #ffffff;
         --color-text-tooltip: #000000;
+        --color-scrollbar-thumb: #4b4b4b;
 
         --grad-card-1: linear-gradient(45deg, #ffafbd 0%, #ffc3a0 100%);
         --grad-card-2: linear-gradient(45deg, #85e3ff 0%, #d4c0e1 100%);
@@ -84,6 +85,7 @@ body,
 
 ::-webkit-scrollbar {
     background-color: var(--color-primary);
+    width: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -91,6 +93,6 @@ body,
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: var(--color-accent);
+    background-color: var(--color-scrollbar-thumb);
     border-radius: 5px;
 }

@@ -1,6 +1,6 @@
 import { fetchJobById } from "@/actions/jobActions";
 import DashboardHeader from "@/components/DashoardHeader";
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { LocationType } from "@/lib/enums";
 import { cn } from "@/lib/utils";
 
@@ -17,7 +17,7 @@ function Item({ title, children, gradient, itemIndex }: ItemParams) {
     return (
         <div className="flex flex-col border-border border-[1px] rounded-lg">
             <p
-                className="px-4 py-2 rounded-lg rounded-b-none text-md font-medium border-border border-b-[1px] text-text-primary-alt"
+                className="px-4 py-2 rounded-lg rounded-b-none text-md border-border border-b-[1px] text-text-primary-alt"
                 style={{
                     backgroundImage: `var(--grad-card-${gradientIndex})`,
                 }}
@@ -66,7 +66,7 @@ export default async function JobDetails({
                         </BreadcrumbItem>
                         <BreadcrumbSeparator />
                         <BreadcrumbItem>
-                            <BreadcrumbLink href={`/dashboard/jobs/${params.id}`} className="breadcrum-page">{params.id}</BreadcrumbLink>
+                            <BreadcrumbPage className="breadcrum-page">{params.id}</BreadcrumbPage>
                         </BreadcrumbItem>
                     </BreadcrumbList>
                 </Breadcrumb>

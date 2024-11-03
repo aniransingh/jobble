@@ -103,12 +103,11 @@ export default function CreateJobPage() {
                         </BreadcrumbItem>
                         <BreadcrumbSeparator />
                         <BreadcrumbItem>
-                            <BreadcrumbLink
-                                href="/dashboard/jobs/create"
+                            <BreadcrumbPage
                                 className="breadcrum-page"
                             >
                                 Create Job
-                            </BreadcrumbLink>
+                            </BreadcrumbPage>
                         </BreadcrumbItem>
                     </BreadcrumbList>
                 </Breadcrumb>

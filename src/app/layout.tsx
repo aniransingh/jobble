@@ -1,5 +1,5 @@
-import { jetBrainsMono } from "@/styles/fonts";
-import "@/styles/globals.css";
+import { robotoMono } from "@/app/styles/fonts";
+import "@/app/styles/globals.css";
 
 export const metadata = {
     title: "Jobble",
@@ -13,7 +13,9 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body className={`${jetBrainsMono.className} antialiased`}>
+            <body
+                className={`${robotoMono.className} antialiased bg-primary text-text-primary`}
+            >
                 {children}
             </body>
         </html>

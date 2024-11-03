@@ -66,6 +66,10 @@ export async function fetchJobs(): Promise<ApiResponse<JobDocument[]>> {
     try {
         await dbConnect();
 
+        // const sortPipeline = [{
+
+        // }]
+
         const jobs = await JobModel.find().sort({ appliedOn: -1 }).lean();
 
         return {
@@ -123,6 +127,36 @@ export async function fetchJobById(
         return {
             success: false,
             message: `Error fetching Job by id: ${id}, please try again later`,
+        };
+    }
+}
+
+export async function fetchCountJobsAppliedToday(): Promise<
+    ApiResponse<number>
+> {
+    try {
+        await dbConnect()
+        
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        const tomorrow = new Date(today);
+        tomorrow.setDate(today.getDate() + 1); 
+
+        const jobs = await JobModel.find({
+            appliedOn: { $gte: today, $lt: tomorrow }
+        });
+
+        return {
+            success: true,
+            data: jobs ? jobs.length : 0,
+        };
+    } catch (error) {
+        console.error(error);
+
+        return {
+            success: false,
+            message: `Error fetching the count of jobs applied today, please try again later`,
         };
     }
 }

@@ -24,7 +24,7 @@ export interface JobDocument extends Document {
 const JobSchema: Schema<JobDocument> = new Schema(
     {
         role: { type: String, required: true },
-        appliedOn: { type: Date, required: true },
+        appliedOn: { type: Date, required: true, index: true },
         company: { type: String, required: true },
         locationType: {
             type: String,

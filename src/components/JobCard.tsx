@@ -30,14 +30,13 @@ export default function JobCard({
     locationType,
 }: Props) {
     const { Pending, Rejected, Interview } = ApplicationStatus;
-    const cardColors = ["#f9f6fe", "#fef4e3", "#f7fcec", "#fefcea", "#f9f0f0"];
+    const gradientIndex = (iterationId % 10) + 1;
     const stateColors = {
-        [Pending]: "#FFFACD",
-        [Rejected]: "red-400",
-        [Interview]: "blue-400",
+        [Pending]: "#FCF75E",
+        [Rejected]: "#FF6347",
+        [Interview]: "#318CE7",
     };
 
-    const MAX_LOCATION_CHAR_LEN = 29;
     let location = "";
     // ! Old data does not have * locationType * field in db
     // if (locationType == LocationType.Physical) {
@@ -52,38 +51,46 @@ export default function JobCard({
         location = city + ", " + state + ", " + country;
     }
 
-    if (location.length > MAX_LOCATION_CHAR_LEN) {
-        location = location.substring(0, MAX_LOCATION_CHAR_LEN) + "...";
-    }
+    const truncateField = (field: string, maxCharLen?: number): string => {
+        const defaultMaxCharLen = 29;
+
+        const maxLength = maxCharLen || defaultMaxCharLen;
+        return field.length > maxLength
+            ? field.substring(0, maxLength) + "..."
+            : field;
+    };
+
+    location = truncateField(location);
+    company = truncateField(company, 25);
+    role = truncateField(role, 40);
 
     return (
-        <Card>
-            <CardContent className="flex flex-col p-1 h-full ">
+        <Card className="h-[300px] bg-secondary border-border text-text-primary rounded-xl">
+            <CardContent className="flex flex-col justify-center p-0 h-full ">
                 <div
-                    className="flex flex-1 flex-col p-4"
+                    className="flex flex-1 flex-col p-4 rounded-lg mx-[5px] mt-[5px]"
                     style={{
-                        backgroundColor:
-                            cardColors[iterationId % cardColors.length],
+                        backgroundImage: `var(--grad-card-${gradientIndex})`,
                     }}
                 >
                     <div className="flex flex-col gap-3 ">
                         <div className="flex justify-between items-center">
-                            <p className="text-sm">
+                            <p className="text-sm text-text-primary-alt">
                                 {appliedOn.toDateString()}
                             </p>
                             <p
-                                className=" rounded-full py-[2px] px-2 text-sm"
+                                className=" rounded-full w-[26px] h-[12px] text-xs text-text-primary-alt"
                                 style={{
                                     backgroundColor: stateColors[status],
                                 }}
-                            >
-                                {status}
-                            </p>
+                            ></p>
                         </div>
-                        <p className="text-[1.735rem] font-light">{role}</p>
+                        <p className="text-[1.7rem] font-light text-text-primary-alt">
+                            {role}
+                        </p>
                     </div>
                 </div>
-                <div className="flex justify-between items-center flex-none p-2 ">
+                <div className="flex justify-between items-center py-2 px-4 h-[60px]">
                     <div className="flex flex-col">
                         <p className="font-semibold">{company}</p>
                         <div className="flex text-sm">
@@ -91,7 +98,7 @@ export default function JobCard({
                         </div>
                     </div>
                     <Link href={`/dashboard/jobs/${jobId}`}>
-                        <Button type="button" className="rounded-full">
+                        <Button type="button" variant="custom" className=" rounded-full">
                             View
                         </Button>
                     </Link>

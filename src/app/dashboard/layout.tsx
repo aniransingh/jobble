@@ -1,14 +1,20 @@
-import Sidebar from "@/components/Sidebar";
+import AppSidebar from "@/components/AppSidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 
 export default function DashboardLayout({
     children,
 }: {
     children: React.ReactNode;
 }) {
+
     return (
-        <div className="flex h-screen relative">
-            <Sidebar />
-            <div className="w-full ml-[200px] overflow-y-scroll">{children}</div>
-        </div>
+        <SidebarProvider>
+            <div className="flex w-screen h-screen relative">
+                <AppSidebar />
+                <div className="w-full overflow-y-scroll">
+                    {children}
+                </div>
+            </div>
+        </SidebarProvider>
     );
 }

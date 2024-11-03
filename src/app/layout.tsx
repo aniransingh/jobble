@@ -1,4 +1,4 @@
-import { jetBrainsMono, robotoMono } from "@/app/styles/fonts";
+import { robotoMono } from "@/app/styles/fonts";
 import "@/app/styles/globals.css";
 
 export const metadata = {

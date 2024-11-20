@@ -10,19 +10,23 @@ body,
 }
 
 .input {
-    @apply h-[40px] bg-secondary border-border rounded-lg text-[0.895rem];
+    @apply h-[40px] bg-secondary border-border rounded-lg text-[0.845rem];
 }
 
 .form-input {
-    @apply w-[400px] h-[40px] bg-secondary border-border rounded-lg text-[0.895rem];
+    @apply w-[380px] h-[40px] bg-secondary border-border rounded-lg text-[0.845rem];
 }
 
 .label {
-    @apply text-[0.895rem];
+    @apply text-[0.86rem];
 }
 
 .form-btn {
-    @apply h-[40px] w-[400px] font-medium text-[1rem];
+    @apply h-[40px] w-[380px];
+}
+
+.form-submit-btn {
+    @apply font-medium text-[1rem] mt-8;
 }
 
 .auth-input {
@@ -43,6 +47,67 @@ body,
 
 .breadcrum-page {
     @apply text-[#fff] hover:text-text-primary;
+}
+
+.page {
+    @apply flex flex-col w-full min-h-full;
+}
+
+.btn {
+    height: 34px;
+    min-width: 54px;
+}
+
+.btn-3d {
+    cursor: pointer;
+    border: 2px solid var(--btn-border-color, #3b215c);
+    border-radius: 0.75em;
+    position: relative;
+    background-color: var(--btn-bg-color, #c7a2f7);
+    transform-style: preserve-3d;
+    transition: 0.15s cubic-bezier(0, 0, 0.6, 1);
+    color: var(--btn-text-color, #3b215c);
+    margin-bottom: 10px;
+}
+
+.btn-3d::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background-color: var(--btn-shadow-color, #783ec4);
+    transform: translate3d(0, 0.55em, -1em);
+    transition: 0.15s cubic-bezier(0, 0, 0.6, 1);
+}
+
+.btn-3d:hover {
+    background-color: var(--btn-hover-bg-color, #c7a2f7);
+    transform: translate(0, 0.25em);
+}
+
+.btn-3d:hover::before {
+    transform: translate3d(0, 0.45em, -1em);
+}
+
+.btn-3d:active {
+    transform: translate(0, 0.75em);
+}
+
+.btn-3d:active::before {
+    transform: translate3d(0, 0, -1em);
+}
+
+.btn-3d--white {
+    --btn-border-color: #696969;
+    --btn-bg-color: #ffffff;
+    --btn-shadow-color: #d1d1d1;
+    --btn-hover-bg-color: #f5f5f5;
+    --btn-text-color: #000000;
 }
 
 @layer base {

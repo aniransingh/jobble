@@ -1,13 +1,15 @@
 "use server";
 
-import dbConnect from "@/db/dbConnect";
-import JobModel, { JobDocument } from "@/db/model/Job.model";
+import dbConnect from "@/utils/dbConnect";
+import JobModel, { JobDocument } from "@/model/Job.model";
 import { createJobSchema } from "@/validation/job.validation";
 import { z } from "zod";
 import { gzip, gunzip } from "zlib";
 import { promisify } from "util";
 import { LocationType } from "@/lib/enums";
 import { ApiResponse } from "@/lib/types";
+import { DBConnectionError, DBConnectionErrorRedirectPath } from "@/lib/errors";
+import { redirect } from "next/navigation";
 
 const compress = promisify(gzip);
 
@@ -15,6 +17,8 @@ export async function createJob(
     data: z.infer<typeof createJobSchema>
 ): Promise<ApiResponse<null>> {
     try {
+        await dbConnect();
+
         const validation = createJobSchema.safeParse(data);
 
         if (!validation.success) {
@@ -32,8 +36,6 @@ export async function createJob(
             delete parsedData.city;
             delete parsedData.state;
         }
-
-        await dbConnect();
 
         const { jobDescription, ...restData } = parsedData;
 
@@ -62,27 +64,21 @@ export async function createJob(
     }
 }
 
-export async function fetchJobs(): Promise<ApiResponse<JobDocument[]>> {
+export async function fetchJobs(): Promise<JobDocument[] | null> {
     try {
         await dbConnect();
 
-        // const sortPipeline = [{
+        const jobs = await JobModel.find()?.sort({ appliedOn: -1 }).lean();
+        // const jobs = await JobModel.find()?.sort({ appliedOn: -1 }).limit(5).lean();
 
-        // }]
-
-        const jobs = await JobModel.find().sort({ appliedOn: -1 }).lean();
-
-        return {
-            success: true,
-            data: jobs,
-        };
+        return jobs;
     } catch (error) {
         console.error(error);
+        if (error instanceof DBConnectionError) {
+            redirect(DBConnectionErrorRedirectPath);
+        }
 
-        return {
-            success: false,
-            message: "Error fetching Jobs, please try again later",
-        };
+        throw error;
     }
 }
 
@@ -135,7 +131,7 @@ export async function fetchCountJobsAppliedToday(): Promise<
     ApiResponse<number>
 > {
     try {
-        await dbConnect()
+        await dbConnect();
         
         const today = new Date();
         today.setHours(0, 0, 0, 0);
@@ -144,7 +140,7 @@ export async function fetchCountJobsAppliedToday(): Promise<
         tomorrow.setDate(today.getDate() + 1); 
 
         const jobs = await JobModel.find({
-            appliedOn: { $gte: today, $lt: tomorrow }
+            appliedOn: { $gte: today, $lt: tomorrow },
         });
 
         return {

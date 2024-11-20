@@ -21,7 +21,11 @@ const buttonVariants = cva(
                 link: "text-neutral-900 underline-offset-4 hover:underline dark:text-neutral-50",
                 custom: "bg-button hover:bg-accent",
                 accent: "bg-accent hover:bg-accent-hover",
-                "outline-custom": "bg-button",
+                simple: "bg-button",
+                "black-white": "text-text-primary hover:bg-white hover:text-text-primary-alt",
+                "outline-custom": "border-border border-[1px]",
+                "3d": "btn btn-3d",
+                "3d-white": "btn btn-3d btn-3d--white"
             },
             size: {
                 default: "h-10 px-4 py-2",

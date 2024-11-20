@@ -44,7 +44,7 @@ import { createJob } from "@/actions/jobActions";
 import { useRouter } from "next/navigation";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
-import DashboardHeader from "@/components/DashoardHeader";
+import BaseHeader from "@/components/headers/BaseHeader";
 
 export default function CreateJobPage() {
     const router = useRouter();
@@ -90,7 +90,7 @@ export default function CreateJobPage() {
 
     return (
         <div>
-            <DashboardHeader>
+            <BaseHeader>
                 <Breadcrumb>
                     <BreadcrumbList className="breadcrum">
                         <BreadcrumbItem>
@@ -103,15 +103,13 @@ export default function CreateJobPage() {
                         </BreadcrumbItem>
                         <BreadcrumbSeparator />
                         <BreadcrumbItem>
-                            <BreadcrumbPage
-                                className="breadcrum-page"
-                            >
+                            <BreadcrumbPage className="breadcrum-page">
                                 Create Job
                             </BreadcrumbPage>
                         </BreadcrumbItem>
                     </BreadcrumbList>
                 </Breadcrumb>
-            </DashboardHeader>
+            </BaseHeader>
             <div className="flex p-4">
                 <Form {...form}>
                     <form
@@ -165,7 +163,7 @@ export default function CreateJobPage() {
                             }}
                         />
                         <div className="flex flex-col gap-2">
-                            <p className="text-sm font-medium">Location</p>
+                            <p className="label">Location</p>
                             <FormField
                                 control={form.control}
                                 name="locationType"
@@ -351,7 +349,7 @@ export default function CreateJobPage() {
                             name="status"
                             render={({ field }) => {
                                 return (
-                                    <FormItem className="flex flex-col gap-[5px]">
+                                    <FormItem className="flex flex-col gap-[3px]">
                                         <FormLabel className="label">
                                             Status
                                         </FormLabel>
@@ -359,7 +357,7 @@ export default function CreateJobPage() {
                                             <PopoverTrigger asChild>
                                                 <FormControl>
                                                     <Button
-                                                        className="w-[400px] gap-4 relative"
+                                                        className="form-btn gap-4 relative p-0 mt-0"
                                                         type="button"
                                                         variant="outline-custom"
                                                     >
@@ -429,7 +427,7 @@ export default function CreateJobPage() {
                             name="appliedOn"
                             render={({ field }) => {
                                 return (
-                                    <FormItem className="flex flex-col gap-[5px]">
+                                    <FormItem className="flex flex-col gap-[3px]">
                                         <FormLabel className="label">
                                             Applied On
                                         </FormLabel>
@@ -437,7 +435,7 @@ export default function CreateJobPage() {
                                             <PopoverTrigger asChild>
                                                 <FormControl>
                                                     <Button
-                                                        className="w-[400px] gap-4 relative"
+                                                        className="form-btn gap-4 relative"
                                                         type="button"
                                                         variant="outline-custom"
                                                     >
@@ -491,7 +489,7 @@ export default function CreateJobPage() {
                                         </FormLabel>
                                         <FormControl>
                                             <Textarea
-                                                className="input"
+                                                className="input w-[1188px]"
                                                 placeholder="Dump the job description here"
                                                 {...field}
                                             />
@@ -504,8 +502,8 @@ export default function CreateJobPage() {
                         {/* Submit */}
                         <Button
                             type="submit"
-                            variant="accent"
-                            className="form-btn mt-8"
+                            variant="3d"
+                            className="form-btn form-submit-btn"
                         >
                             Submit
                         </Button>

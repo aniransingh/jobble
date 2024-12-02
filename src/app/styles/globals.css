@@ -50,7 +50,7 @@ body,
 }
 
 .page {
-    @apply flex flex-col w-full min-h-full;
+    @apply flex flex-col w-full h-full max-h-max;
 }
 
 .btn {
@@ -86,7 +86,6 @@ body,
 }
 
 .btn-3d:hover {
-    background-color: var(--btn-hover-bg-color, #c7a2f7);
     transform: translate(0, 0.25em);
 }
 
@@ -106,7 +105,6 @@ body,
     --btn-border-color: #696969;
     --btn-bg-color: #ffffff;
     --btn-shadow-color: #d1d1d1;
-    --btn-hover-bg-color: #f5f5f5;
     --btn-text-color: #000000;
 }
 

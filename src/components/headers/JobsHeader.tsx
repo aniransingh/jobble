@@ -22,7 +22,7 @@ export default function JobsHeader({ count }: Params) {
                 </Link> */}
                 <Link href="/dashboard/jobs/create">
                     <Button variant="3d-white" size="sm">
-                        <CirclePlus className="h-[26px] w-[26px]" />
+                        <CirclePlus className="h-[22px] w-[22px]" />
                     </Button>
                 </Link>
             </div>

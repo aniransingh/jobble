@@ -5,4 +5,4 @@ export class DBConnectionError extends Error {
     }
 }
 
-export const DBConnectionErrorRedirectPath = "/error"
+export const DBConnectionErrorRedirectPath = "/internal-server-error"

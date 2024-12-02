@@ -1,0 +1,24 @@
+services:
+  next-app:
+    depends_on:
+      - mongo
+    build: .
+    networks:
+      - jobble-net
+  
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - jobble-net
+
+volumes:
+  mongo_data:
+    driver: local 
+
+networks:
+  jobble-net:
+    driver: bridge
